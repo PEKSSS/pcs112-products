@@ -34,28 +34,27 @@ exports.createUser=(req,res)=>{
 //Edit a user
 //CRUD - Update
 
-// exports.updateUser=(req,res)=>{
-//     const {id, fname, lname, email, gender}=req.body;
-//     connection.query('UPDATE userdata SET first_name=?, last_name=?, email=?, gender=? WHERE id=?', [fname, lname, email, gender, id], (err, result)=>{
-//         if(err) throw err;
-//         if(result.affectedRows>0)
-//             res.json({message: 'User updated successfully'});
-//         else
-//             res.status(404).json({message: 'User not found'});
-//         })
-//     }
+exports.updateUser=(req,res)=>{
+    const {id, itemName, unitPrice, quantity, supplier}=req.body;
+    connection.query('UPDATE product_info SET itemName=?, unitPrice=?, quantity=?, supplier=? WHERE id=?', [itemName, unitPrice, quantity, supplier, id], (err, result)=>{
+        if(err) throw err;
+        if(result.affectedRows>0)
+            res.json({message: 'User updated successfully'});
+        else
+            res.status(404).json({message: 'User not found'});
+        })
+    }
 
-// //Delete a user
-// //CRUD - Delete
-// exports.deleteUser=(req,res)=>{
-//     const id=req.body.id;
-//     connection.query('DELETE FROM userdata WHERE id=?', [id], (err, result)=>{
-//         if(err) throw err;
-//         if(result.affectedRows>0)
-//             res.json({message: 'User deleted successfully'});
-//         else
-//             res.status(404).json({message: 'User not found'});
-//     })
-// }
-
+//Delete a user
+//CRUD - Delete
+exports.deleteUser=(req,res)=>{
+    const id=req.body.id;
+    connection.query('DELETE FROM product_info WHERE id=?', [id], (err, result)=>{
+        if(err) throw err;
+        if(result.affectedRows>0)
+            res.json({message: 'User deleted successfully'});
+        else
+            res.status(404).json({message: 'User not found'});
+    })
+}
 
