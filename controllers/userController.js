@@ -2,7 +2,7 @@
 const connection=require('../config/db');
 //get all users
 exports.getAllUsers=(req,res)=>{
-    connection.query('SELECT * FROM userdata', (err, rows, fields)=>{
+    connection.query('SELECT * FROM product_info', (err, rows, fields)=>{
         if(err) throw err;
             res.json(rows);
     });
@@ -12,7 +12,7 @@ exports.getAllUsers=(req,res)=>{
 // CRUD - Report
 exports.getUserById=(req,res)=>{
     const id=req.params.id;
-    connection.query('SELECT * FROM userdata WHERE id=?', [id], (err, rows, fields)=>{
+    connection.query('SELECT * FROM product_info WHERE id=?', [id], (err, rows, fields)=>{
         if(err) throw err;
         if(rows.length>0)
             res.json(rows);
@@ -57,4 +57,5 @@ exports.createUser=(req,res)=>{
 //             res.status(404).json({message: 'User not found'});
 //     })
 // }
+
 
